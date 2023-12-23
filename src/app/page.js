@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 
 import Navbar from './component/Navbar'
-import Body from './component/Body'
+import Body from './component/Body' 
 
 export default function Home() {
 
@@ -15,7 +15,7 @@ export default function Home() {
   }, [selectedGrouping, selectedOrdering]);
 
   return (
-    <div className='w-full min-h-screen bg-[#f4f5f8]'>
+    <div className='w-full min-h-screen bg-[#f4f5f8] dark:bg-[#02040a]'>
       <Navbar selectedGrouping={selectedGrouping} setSelectedGrouping={setSelectedGrouping} selectedOrdering={selectedOrdering} setSelectedOrdering={setSelectedOrdering} />
       <Body selectedGrouping={selectedGrouping} setSelectedGrouping={setSelectedGrouping} selectedOrdering={selectedOrdering} setSelectedOrdering={setSelectedOrdering} />
     </div>

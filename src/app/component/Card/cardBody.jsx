@@ -21,20 +21,20 @@ const CardBody = ({ ticket, users, grouping }) => {
     const status = statuses.find(s => s.title === ticket.status);
 
     return (
-        <div className='text-[15px] p-[20px] flex flex-col gap-2 rounded-lg bg-white shadow'>
+        <div className='text-[15px] p-[20px] flex flex-col gap-2 rounded-lg bg-white dark:bg-[#161b22] shadow'>
             {/* Top section with user ID and user icon (if grouping is not 'User') */}
-            <div className='flex flex-row items-center justify-between text-[#a6a9ad] bg-white'>
-                <div className='bg-white'>
+            <div className='flex flex-row items-center justify-between text-[#a6a9ad] bg-white dark:bg-[#161b22]'>
+                <div className='bg-white dark:bg-[#161b22]'>
                     {ticket.id}
                 </div>
                 {grouping !== 'User' && (
-                    <div className='bg-trans'>
+                    <div className='flex items-center'>
                         {/* Display an active or inactive indicator based on user availability */}
-                        {active ? <div className='active'></div>
-                                : <div className='inactive'></div>
+                        {active ? <div className='relative -right-[24px] top-[8px] w-[10px] h-[10px] border-[2px] border-white rounded-full bg-[#ffa500]'></div>
+                                : <div className='relative -right-[24px] top-[8px] w-[10px] h-[10px] border-[2px] border-white rounded-full bg-[#a6a9ad]'></div>
                         }
                         {/* Display the user icon (first character of the user name) */}
-                        <div className='relative right-0 top=0 flex items-center justify-center w-[25px] h-[25px] text-[14px]'>
+                        <div className='flex items-center justify-center w-[20px] h-[20px] text-[12px] font-bold rounded-full text-white dark:text-black bg-[#35383d] dark:bg-white'>
                             {userIcon}
                         </div>
                     </div>
@@ -50,22 +50,22 @@ const CardBody = ({ ticket, users, grouping }) => {
                     </div>
                 )}
                 {/* Display the ticket title */}
-                <div className='userTitle'>
+                <div className='text-black dark:text-white'>
                     {ticket.title}
                 </div>
             </div>
             {/* Bottom section with priority icon and ticket tags */}
-            <div className='flex flex-wrap items-center gap-2 bg-white text-sm'>
+            <div className='flex flex-wrap items-center gap-2 bg-white dark:bg-[#161b22] text-sm'>
                 {grouping !== 'Priority' && (
-                    <div className='flex items-center justify-center p-0.5 border-2 border-[#dbdbdb] rounded-md'>
+                    <div className='flex items-center justify-center p-0.5 border-[1.5px] border-[#dbdbdb] dark:border-[#4a4a4a] rounded-md'>
                         {/* Display the priority icon based on ticket data */}
                         {priority.icon}
                     </div>
                 )}
                 {/* Display each tag associated with the ticket */}
                 {ticket.tag.map((tag, index) => (
-                    <div key={index} className='flex items-center justify-center gap-2 px-1 border-2 border-[#dbdbdb] rounded-md bg-white text-[#a0a3a7]'>
-                        <div className='w-3 h-3 rounded-full bg-[#bec2c7]'></div>
+                    <div key={index} className='flex items-center justify-center gap-2 px-2 border-[1.5px] border-[#dbdbdb] dark:border-[#4a4a4a] rounded-md bg-white dark:bg-[#161b22] text-[#a0a3a7]'>
+                        <div className='w-3 h-3 rounded-full bg-[#bec2c7] dark:bg-[#a0a3a7]'></div>
                         {tag}
                     </div>
                 ))}

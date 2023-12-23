@@ -27,14 +27,27 @@ const CardHead = ({ userName, title, number, icon, users }) => {
                             {userIcon}
                         </div>
                         {/* Display an active or inactive indicator based on user availability */}
-                        {active ? <div className='activeHead'></div>
-                                : <div className='inactiveHead'></div>
-                        }
+                        {/* {active ? <div className='relative left-[14px] w-[13px] h-[13px] border-[2px] border-white rounded-full bg-[#ffa500]'></div>
+                                : <div className='relative w-[13px] h-[13px] border-[2px] border-white rounded-full bg-[#a6a9ad]'></div>
+                        } */}
                     </>
                 )}
+                {!icon &&
+                    <>
+                        {active
+                            ?   <div className='relative -left-[21px] top-[9px] w-[13px] h-[13px] border-[2px] border-white rounded-full bg-[#ffa500] -z-1'></div>
+                            :   <div className='relative -left-[21px] top-[9px] w-[13px] h-[13px] border-[2px] border-white rounded-full bg-[#a6a9ad] -z-1'></div>
+                        }
+                    </>
+                }
+                {!icon &&
+                    <div className=' -ml-[25px]'>
+                        
+                    </div>
+                }
                 {/* Display the title and number in the header */}
-                <div className='font-bold text-[#35383d]'>{title}</div>
-                <div className='font-semibold text-[#8c8f94]'>{number}</div>
+                <div className='text-md font-bold text-[#35383d] dark:text-white'>{title}</div>
+                <div className='text-md font-semibold text-[#8c8f94]'>{number}</div>
             </div>
             {/* Display icons on the right side of the header */}
             <div className='flex flow-row  gap-[15px]'>

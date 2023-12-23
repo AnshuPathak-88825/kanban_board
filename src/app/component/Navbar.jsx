@@ -1,10 +1,14 @@
 "use client";
 import React, { useState, useEffect } from "react";
 
+import { useTheme } from "next-themes";
+
 import { ImEqualizer } from "react-icons/im";
 import { FaChevronDown } from "react-icons/fa";
-import { MdSunny } from "react-icons/md";
-import { IoMdMoon } from "react-icons/io";
+
+import DarkModeToggle from "./DarkModeToggle";
+
+
 
 
 const Navbar = ({
@@ -13,11 +17,28 @@ const Navbar = ({
   selectedOrdering,
   setSelectedOrdering,
 }) => {
+  // const { theme , setTheme } = useTheme();
+
+
   const [isOptionsVisible, setIsOptionsVisible] = useState(false);
+  const [isChevronRotated, setIsChevronRotated] = useState(false);
+
+  // const handleThemeChange = () => {
+  //   if(theme == "light")
+  //   { setTheme("dark");
+  //   } else {
+  //     setTheme("light");
+  //   }
+  // };
 
   const handleButtonClick = () => {
     setIsOptionsVisible(!isOptionsVisible);
+    setIsChevronRotated(!isOptionsVisible);
   };
+  const handleOutsideClick = () => {
+    setIsOptionsVisible(false);
+    setIsChevronRotated(false);
+  }
   const handleGroupingChange = (event) => {
     setSelectedGrouping(event.target.value);
     setIsOptionsVisible(false);
@@ -27,30 +48,47 @@ const Navbar = ({
     setSelectedOrdering(event.target.value);
     setIsOptionsVisible(false);
   };
+  
+  // useEffect(() => {
+  //     setTheme(localStorage.getItem('theme') || 'light');
+  // }, []);
+  // useEffect(() => {
+  //   localStorage.setItem('theme', theme);
+  // }, [theme]);
+
   return (
-    <div className="w-full bg-white">
-      <div className="w-full flex flex-row items-center justify-between px-[60px] py-[20px] ">
-        <button className="flex flex-row justify-between items-center gap-2 px-[15px] py-[8px] border border-[#e7e8ea] rounded-lg shadow " onClick={handleButtonClick}>
-          <ImEqualizer className="bg-white " />
-          display
-          <FaChevronDown className="bg-white " />
+    <div className="w-full text-black dark:text-white bg-white dark:bg-[#161b22]">
+      <div className="w-full flex flex-row items-center justify-between px-8 sm:px-[60px] py-[20px] "
+      // onClick={handleOutsideClick}
+      >
+        <button className="flex flex-row items-center justify-between gap-2 px-[15px] py-[8px] border border-[#e7e8ea] dark:border-[#4a4a4a] rounded-lg shadow dark:shadow-white "
+        onClick={handleButtonClick}>
+          <ImEqualizer className="text-sm bg-white dark:bg-[#161b22]" />
+          Display
+          <FaChevronDown className={`text-sm bg-white dark:bg-[#161b22] transition-transform transform ${
+    isChevronRotated ? 'rotate-180' : '' // Apply rotation based on state
+  }`} />
         </button>
 
-        <button>
+        <DarkModeToggle />
+        {/* <button onClick={handleThemeChange}>
           <MdSunny />
           <IoMdMoon />
-        </button>
+          <div classname="bg-red-500 dark:bg-yellow-300">
+            {theme}
+            </div>
+        </button> */}
       </div>
       {isOptionsVisible && (
-        <div className="z-1 absolute top-[75px] left-[60px] w-[300px] font-700 px-[20px] py-[15px] border-[1px] border-[#e7e8ea] rounded-lg bg-white text-[#a1a1a3]">
+        <div className="z-1 absolute top-[72px] left-[32px] md:left-[60px] w-[300px] font-700 px-[20px] py-[15px] border-[1px] border-[#e7e8ea] dark:border-[#4a4a4a] rounded-lg bg-white dark:bg-[#161b22] text-[#a1a1a3] dark:text-white">
           <div className="flex flex-col bg-transparent gap-[15px]  ">
             <div className="flex flex-row items-center justify-between decoration-none font-[15px]">
               <div className="">
                 Grouping
-                <FaChevronDown className="z-1 absolute top-[25px] right-[26px] bg-transparent" />
               </div>
-              <div className="min-w-[120px] bg-white z-2 rounded-md">
-                <select className=" appearance-none w-full font-[15px] border-2 border-[#e7e8ea] rounded-lg px-[10px] py-[4px] text-black pointer bg-white" id="option1" value={selectedGrouping} onChange={handleGroupingChange}>
+              <div className="min-w-[120px] flex flex-row bg-white dark:bg-[#161b22] z-2 rounded-md">
+                {/* <FaChevronDown className="z-10 absolute top-[23px] right-[26px] bg-transparent" /> */}
+                <select className=" z-1 w-full font-[12px] border-2 border-[#e7e8ea] dark:border-[#4a4a4a] rounded-lg px-2 py-1 text-black dark:text-white pointer bg-transparent" id="option1" value={selectedGrouping} onChange={handleGroupingChange}>
                   <option value="Status">Status</option>
                   <option value="User">User</option>
                   <option value="Priority">Priority</option>
@@ -60,10 +98,10 @@ const Navbar = ({
             <div className="flex flex-row items-center justify-between decoration-none font-[15px]">
               <div>
                 Ordering
-                <FaChevronDown className="z-1 absolute top-[75px] right-[26px] bg-transparent" />
               </div>
-              <div className="min-w-[120px] bg-white z-2 rounded-md">
-                <select   className="appearance-none w-full font-[15px] border-2 border-[#e7e8ea] rounded-lg px-[10px] py-[4px] text-black pointer bg-white" id="option1" value={selectedOrdering} onChange={handleOrderingChange}>
+              <div className="min-w-[120px] flex flex-row bg-white dark:bg-[#161b22] z-2 rounded-md">
+                {/* <FaChevronDown className="z-10 absolute top-[68px] right-[26px] bg-transparent" /> */}
+                <select   className="z-1 w-full font-[12px] border-2 border-[#e7e8ea] dark:border-[#4a4a4a] rounded-lg px-2 py-1 text-black dark:text-white pointer bg-transparent" id="option1" value={selectedOrdering} onChange={handleOrderingChange}>
                   <option value="Priority">Priority</option>
                   <option value="Title">Title</option>
 
