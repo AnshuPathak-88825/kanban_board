@@ -18,7 +18,8 @@ const statuses = [
     },
     {
         title: 'In progress',
-        icon: <FaCircleHalfStroke className='bg-transparent flex items-center justify-center w-[18px] h-[18px] border-2 border-[#f1c94b] rounded-full bg-[#f1c94b]'/>
+        icon: <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" className='text-[#f5c842]' height="1.2em" width="1.2em" xmlns="http://www.w3.org/2000/svg"><path d="M12 2h-1v9H2v1a10 10 0 0 0 17.07 7.07A10 10 0 0 0 12 2z"></path></svg>
+        // <FaCircleHalfStroke className='bg-transparent flex items-center justify-center w-[18px] h-[18px] border-2 border-[#f1c94b] rounded-full bg-[#f1c94b]'/>
     },
     {
         title: 'Done',

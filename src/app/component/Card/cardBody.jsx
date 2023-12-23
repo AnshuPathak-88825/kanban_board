@@ -21,7 +21,7 @@ const CardBody = ({ ticket, users, grouping }) => {
     const status = statuses.find(s => s.title === ticket.status);
 
     return (
-        <div className='text-[15px] p-[20px]  rounded-lg bg-white shadow'>
+        <div className='text-[15px] p-[20px] flex flex-col gap-2 rounded-lg bg-white shadow'>
             {/* Top section with user ID and user icon (if grouping is not 'User') */}
             <div className='flex flex-row items-center justify-between text-[#a6a9ad] bg-white'>
                 <div className='bg-white'>
@@ -41,9 +41,9 @@ const CardBody = ({ ticket, users, grouping }) => {
                 )}
             </div>
             {/* Middle section with status icon and ticket title */}
-            <div className='middle'>
+            <div className='flex gap-2 items-start'>
                 {grouping !== 'Status' && (
-                    <div className='status'>
+                    <div>
                         {/* Display the status icon based on ticket data */}
                         {status ? status.icon
                                 : null}
@@ -55,17 +55,17 @@ const CardBody = ({ ticket, users, grouping }) => {
                 </div>
             </div>
             {/* Bottom section with priority icon and ticket tags */}
-            <div className='bottom'>
+            <div className='flex flex-wrap items-center gap-2 bg-white text-sm'>
                 {grouping !== 'Priority' && (
-                    <div className='priority priority-color'>
+                    <div className='flex items-center justify-center p-0.5 border-2 border-[#dbdbdb] rounded-md'>
                         {/* Display the priority icon based on ticket data */}
                         {priority.icon}
                     </div>
                 )}
                 {/* Display each tag associated with the ticket */}
                 {ticket.tag.map((tag, index) => (
-                    <div key={index} className='tag'>
-                        <div className='cir'></div>
+                    <div key={index} className='flex items-center justify-center gap-2 px-1 border-2 border-[#dbdbdb] rounded-md bg-white text-[#a0a3a7]'>
+                        <div className='w-3 h-3 rounded-full bg-[#bec2c7]'></div>
                         {tag}
                     </div>
                 ))}

@@ -1,14 +1,16 @@
 "use client"
-import React from 'react';
+import React, {useState,useEffect} from 'react';
+
 import CardHead from '../Card/cardHead.jsx';
 import CardBody from '../Card/cardBody.jsx';
+
 import priorities from '../GroupingObjects/priorities.jsx'
-import { useState,useEffect } from 'react';
+
 const groupByPriority = ({ data, grouping, ordering }) => {
-  const [groupedTickets, setGroupedTickets] = React.useState({});
+  const [groupedTickets, setGroupedTickets] = useState({});
 
   // Effect to group tickets by priority when data changes
-  React.useEffect(() => {
+  useEffect(() => {
       // Check if data is available
       if (data) {
           // Grouping tickets based on priority
@@ -26,13 +28,13 @@ const groupByPriority = ({ data, grouping, ordering }) => {
       }
   }, [data]);
   return (
-    <div>
+    <div className="w-full">
         {/* Check if there are grouped tickets to display */}
         {/* Rendering grouped tickets based on priority */}
         {groupedTickets && Object.keys(groupedTickets).length > 0 ? (
-            <div className='HorizontalAlign'> 
+            <div className='flex flex-wrap h-auto'> 
                 {priorities.map(priority => (
-                    <div key={priority.id} className='CardWidth'>
+                    <div key={priority.id} className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 px-2'>
 
                         {/* CardHead component for displaying priority information */}
                         <CardHead
@@ -41,8 +43,8 @@ const groupByPriority = ({ data, grouping, ordering }) => {
                             icon = {priority.icon}
                             users = {data.users}
                         />
-                        
-                        {/* Conditional rendering based on ordering type */}
+                        <div className='w-full flex flex-col gap-4'>
+                            {/* Conditional rendering based on ordering type */}
                             {/* Rendering tickets based on priority, if available */}
                             {ordering === 'Priority' && (
                                 groupedTickets[priority.id] ? (
@@ -65,6 +67,7 @@ const groupByPriority = ({ data, grouping, ordering }) => {
                                     <></> // Placeholder for empty case
                                 )
                             )}
+                        </div>
                     </div>
                 ))}
             </div>

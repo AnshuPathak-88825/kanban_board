@@ -25,13 +25,13 @@ const groupByStatus = ({ data, grouping, ordering }) => {
     }
   }, [data]);
   return (
-    <div>
+    <div className="w-full">
       {/* Check if there are grouped tickets to display */}
       {/* Rendering grouped tickets based on status */}
       {groupedTickets && Object.keys(groupedTickets).length > 0 ? (
-        <div className="flex overflow-x-scroll gap-[50px] px-[20px]  h-auto">
+        <div className="flex flex-wrap h-auto">
           {statuses.map((status) => (
-            <div key={status.title} className=" min-w-[400px] max-w-[400px]">
+            <div key={status.title} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 px-2">
               {/* CardHead component for displaying status information */}
               <CardHead
                 title={status.title}
@@ -39,7 +39,7 @@ const groupByStatus = ({ data, grouping, ordering }) => {
                 icon={status.icon}
                 users={data.users}
               />
-              <div className="w-full flex flex-col gap-6">
+              <div className="w-full flex flex-col gap-4">
                 {/* Conditional rendering based on ordering type */}
                 {/* Rendering tickets based on status, sorted by priority in decreasing order */}
                 {ordering === "Priority" &&

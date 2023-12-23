@@ -1,8 +1,12 @@
 "use client";
+import React, { useState, useEffect } from "react";
+
 import { ImEqualizer } from "react-icons/im";
 import { FaChevronDown } from "react-icons/fa";
-import React from "react";
-import { useState, useEffect } from "react";
+import { MdSunny } from "react-icons/md";
+import { IoMdMoon } from "react-icons/io";
+
+
 const Navbar = ({
   selectedGrouping,
   setSelectedGrouping,
@@ -32,7 +36,10 @@ const Navbar = ({
           <FaChevronDown className="bg-white " />
         </button>
 
-        <button>l/d</button>
+        <button>
+          <MdSunny />
+          <IoMdMoon />
+        </button>
       </div>
       {isOptionsVisible && (
         <div className="z-1 absolute top-[75px] left-[60px] w-[300px] font-700 px-[20px] py-[15px] border-[1px] border-[#e7e8ea] rounded-lg bg-white text-[#a1a1a3]">

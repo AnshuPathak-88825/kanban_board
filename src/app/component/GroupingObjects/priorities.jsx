@@ -11,7 +11,7 @@ const priorities = [
     {
         id: 4,
         name: 'Urgent',
-        icon: <MdOutlinePriorityHigh className='flex item-center justify-center border-2 border-[#fb773f] rounded-md bg-[#fb773f] text-white'/>,
+        icon: <MdOutlinePriorityHigh className='flex item-center justify-center border-2 border-[#fb773f] rounded-sm bg-[#fb773f] text-white'/>,
     },
     {
         id: 3,

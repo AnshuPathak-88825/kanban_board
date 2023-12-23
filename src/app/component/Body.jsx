@@ -63,10 +63,10 @@ const Body = ({
   };
 
   return (
-    <div className="w-full h-auto  mb-[100px] bg-[#f4f5f8]">
+    <div className="w-full h-auto  pb-[100px]">
       {/* Conditional rendering based on data availability */}
       {data ? (
-        <div className="px-[50px] pt-[50px]">{renderGroupingComponent()}</div>
+        <div className="px-[20px]">{renderGroupingComponent()}</div>
       ) : (
         <p></p>
       )}
