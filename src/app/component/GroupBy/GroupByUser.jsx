@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import CardHead from '../Card/cardHead';
 import CardBody from '../Card/cardBody';
 
-const groupByUser = ({ data, grouping, ordering }) => {
+const GroupByUser = ({ data, grouping, ordering }) => {
   const [groupedTickets, setGroupedTickets] = useState({});
 
   useEffect(() => {
@@ -87,4 +87,4 @@ const groupByUser = ({ data, grouping, ordering }) => {
   );
 }
 
-export default groupByUser
+export default GroupByUser
